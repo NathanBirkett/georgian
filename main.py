@@ -47,7 +47,7 @@ def convert_number(num):
             twenties = ""
         if twenties == "სამმ":
             twenties = "სამ"
-        remainder = "და" + numeral_map[num % 20]
+        remainder = "და" + convert_number(num % 20)
         if remainder == "დანული":
             remainder = "ი"
         return stem(twenties + numeral_map[20]) + remainder
@@ -64,8 +64,9 @@ def convert_number(num):
             return thousands + " " + numeral_map[1000]
         return stem(thousands + " " + numeral_map[1000]) + " " + remainder
 
-# number = random.randint(0, 99999)
-number = 1_000_000
+
+digits = random.randint(0, 6)
+number = random.randint(0, 10**digits - 1)
 
 print(number)
 print(convert_number(number))
